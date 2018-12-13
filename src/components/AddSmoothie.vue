@@ -13,7 +13,7 @@
       </div>
       <div class="field add-ingredient">
         <label for="add-ingredient">Add an ingredient:</label>
-        <input type="text" name="add-ingredient" @keydown.tab.prevent="addIng" v-model="another">
+        <input type="text" name="add-ingredient" @keydown.enter.prevent="addIng" v-model="another">
       </div>
       <div class="field center-align">
         <p v-if="feedback" class="red-text">{{feedback}}</p>
@@ -48,7 +48,6 @@ export default {
           remove: /[$*_+~.()'"!\-:@]/g,
           lower: true
         });
-        console.log(this.slug);
         db.collection("smoothies")
           .add({
             title: this.title,
